@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,6 +52,7 @@ public class BlogController {
 
             Blog.setSubject(fixBlog.getSubject());
             Blog.setDetails(fixBlog.getDetails());
+            Blogs.save(Blog);
             return Blog;
         });
 
@@ -58,4 +60,10 @@ public class BlogController {
         return Blogs.findAll();
     }
 
+    @CrossOrigin
+    @DeleteMapping("/blogs/{id}")
+    public List<Blog> destroy(@PathVariable Integer id) {
+        Blogs.deleteById(id);
+        return Blogs.findAll();
+    }
 }
