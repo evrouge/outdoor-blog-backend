@@ -49,7 +49,7 @@ public class BlogController {
     @PutMapping("/blogs/{id}")
     public List<Blog> update(@RequestBody Blog fixBlog, @PathVariable Integer id) {
         Blogs.findById(id).map(Blog -> {
-
+            Blog.setImage(fixBlog.getImage());
             Blog.setSubject(fixBlog.getSubject());
             Blog.setDetails(fixBlog.getDetails());
             Blogs.save(Blog);

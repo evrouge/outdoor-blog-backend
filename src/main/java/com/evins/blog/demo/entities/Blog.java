@@ -12,6 +12,8 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
 
+    public String image;
+
     public String subject;
 
     public String details;
@@ -22,7 +24,8 @@ public class Blog {
 
     }
 
-    public Blog(String subject, String details) {
+    public Blog(String image, String subject, String details) {
+        this.image = image;
         this.subject = subject;
         this.details = details;
     }
@@ -34,6 +37,14 @@ public class Blog {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getSubject() {
